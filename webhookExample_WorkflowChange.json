@@ -1,0 +1,33 @@
+{
+  "module": "workflow",
+  "api_key": "bltXXX",
+  "data": {
+    "workflow": {
+      "content_type": {
+        "title": "Landing Page",
+        "uid": "landing_page"
+      },
+      "entry": {
+        "title": "Frontpage",
+        "uid": "bltYYY",
+        "version": 3
+      },
+      "locale": {
+        "name": "English - United States",
+        "code": "en-us"
+      },
+      "type": "workflow_stage",
+      "log": {
+        "name": "Complete",
+        "uid": "bltZZZ",
+        "updated_at": "2020-04-24T08:57:02.885Z",
+        "updated_by": "bltXXX",
+        "version": 3,
+        "assigned_to": [],
+        "assigned_by_roles": []
+      }
+    }
+  },
+  "event": "update",
+  "triggered_at": "2020-04-24T08:57:02.971Z"
+}

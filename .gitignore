@@ -1,7 +1,12 @@
+variables.env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+variables.env
+package
+function.zip
 
 # C extensions
 *.so
