@@ -13,6 +13,8 @@ Go to Slack. Create an app that posts to channel or user. Define an environmenta
 
 SLACK_URL = https://hooks.slack.com/services/<something>
 
+Note: US region is hardcoded in link.
+
 '''
 
 url = os.getenv('SLACK_URL')
@@ -33,14 +35,20 @@ def postToSlack(msg):
 def constructMessage(event):
     eventType = event['event']
     contentType = event['data']['workflow']['content_type']['title']
+    contentTypeUID = event['data']['workflow']['content_type']['uid']
     entryTitle = event['data']['workflow']['entry']['title']
     entryUid = event['data']['workflow']['entry']['uid']
     locale = event['data']['workflow']['locale']['code']
     workflowName = event['data']['workflow']['log']['name']
     triggerTime = event['triggered_at']
+    stack = event['api_key']
 
-    msg = '*Workflow {eventType}*\n\n{contentType} entry: {entryTitle} ({entryUid})\nLocale: {locale}\nChanged to workflow stage *{workflowName}*\nTrigger time: {triggerTime})'
-    msg = msg.format(eventType=eventType, contentType=contentType, entryTitle=entryTitle, entryUid=entryUid, locale=locale, workflowName=workflowName, triggerTime=triggerTime)
+    link = 'https://app.contentstack.com/#!/stack/{stack}/content-type/{contentTypeUID}/{locale}/entry/{entryUid}/edit'.format(stack=stack, contentTypeUID=contentTypeUID, locale=locale, entryUid=entryUid)
+
+    linkMsg = '<{link}|{entryTitle}>'.format(link=link, entryTitle=entryTitle)
+
+    msg = '*Workflow {eventType}*\n\n{contentType} entry: {linkMsg} ({entryUid})\nLocale: {locale}\nChanged to workflow stage *{workflowName}*\nTrigger time: {triggerTime})'
+    msg = msg.format(eventType=eventType, contentType=contentType, linkMsg=linkMsg, entryUid=entryUid, locale=locale, workflowName=workflowName, triggerTime=triggerTime)
 
     return msg
 
