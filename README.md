@@ -21,7 +21,7 @@ Using Python 3.7 on [AWS Lambda](https://aws.amazon.com/lambda/).
    * To update code via `awscli`:
     * install pip modules into a subdirectory like this:
       * `pip install --target ./package requests`.
-    * Add all files and folders from the `package` folder into a zip file with the `lambda_function.py` and upload to Lambda like this:
+    * Add all files and folders from the `package` folder (not the `package` folder itself) into a zip file with the `lambda_function.py` and upload to Lambda like this:
       * `aws lambda update-function-code --function-name ContentstackSlackPOC --zip-file fileb://function.zip`
 
 5. Create a webhook in Contentstack, pointing to the API Gateway defined in step 1.
