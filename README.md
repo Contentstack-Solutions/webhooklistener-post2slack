@@ -3,6 +3,10 @@
 
 Using Python 3.7 on [AWS Lambda](https://aws.amazon.com/lambda/).
 
+Receives webhooks from Contentstack and pushes information to Slack.
+
+**Not officially supported by Contentstack**
+
 1. Create a Lambda function and an API Gateway in AWS Lambda. Based on these documentation articles:
    * [TUTORIAL: Build an API Gateway API with Lambda Non-Proxy Integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-lambda-non-proxy-integration.html).
     * We recommend enabling authentication on the API endpoint.
